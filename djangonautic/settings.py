@@ -28,8 +28,7 @@ SECRET_KEY = 'django-insecure-+!98e*u3!v5zpr&+r9c!&u2jph)-+e#kf4b^7g5txr^-0sxwpp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "article.onrender.com"]
-
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "djangonautic.onrender.com"]
 
 # Application definition
 

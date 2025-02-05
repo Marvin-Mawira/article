@@ -1,1 +1,1 @@
-web: gunicorn article.wsgi:application
+web: gunicorn djangonautic.wsgi:application

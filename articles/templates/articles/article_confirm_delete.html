@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block current_page %}Confirm_Delete{% endblock current_page%} 
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card shadow p-4 bg-light">
+        <h2 class="text-center mb-4">Confirm Deletion</h2>
+
+        <!-- Deletion Confirmation Text -->
+        <h4 class="text-danger text-center">Are you sure you want to delete "{{ article.title }}"?</h4>
+
+        <!-- Delete Form -->
+        <form method="post" class="text-center mt-3">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger me-2">Yes, Delete</button>
+            <a href="{% url 'article_detail' article.id %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

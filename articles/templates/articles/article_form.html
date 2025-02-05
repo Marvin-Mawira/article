@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block current_page %}Form{% endblock current_page%} 
+{% block content %}
+
+<div class="container mt-5">
+    <h2 class="text-center">{% if article %}Edit Article{% else %}Create Article{% endif %}</h2>
+
+    <!-- Article Form -->
+    <form method="post" class="shadow p-4 rounded bg-light" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- Title Input -->
+        <div class="mb-3">
+            <label for="title" class="form-label">Title:</label>
+            <input type="text" id="title" name="title" class="form-control"
+                   value="{{ article.title|default:'' }}" placeholder="Enter article title" required>
+        </div>
+
+        <!-- Slug Input -->
+        <div class="mb-3">
+            <label for="slug" class="form-label">Slug:</label>
+            <input type="text" id="slug" name="slug" class="form-control"
+                   value="{{ article.slug|default:'' }}" placeholder="Enter slug" required>
+        </div>
+
+        <!-- Body Textarea -->
+        <div class="mb-3">
+            <label for="body" class="form-label">Body:</label>
+            <textarea id="body" name="body" class="form-control" rows="5"
+                      placeholder="Enter article content" required>{{ article.body|default:'' }}</textarea>
+        </div>
+
+        <!-- Thumb -->
+        <div class="mb-3">
+            <label for="thumb" class="form-label">Thumb:</label>
+            <input type="file" id="thumb" name="thumb" class="form-control" accept="image/*" required>
+            {% if article.thumb %}
+                <div class="mt-2">
+                    <img src="{{ article.thumb.url }}" alt="{{ article.title }}" class="img-fluid" style="max-width: 200px;">
+                </div>
+            {% endif %}
+        </div>
+
+
+        <!-- Form Buttons -->
+        <div class="d-flex justify-content-between">
+            <a href="{% url 'article_list' %}" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
